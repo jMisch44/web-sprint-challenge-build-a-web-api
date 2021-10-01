@@ -46,12 +46,18 @@ router.put(
 router.delete("/:id", validateProjectId, async (req, res, next) => {
   try {
     await Projects.remove(req.params.id);
-    res.status(200);
+    res.status(200).json(null);
   } catch (err) {
     next(err);
   }
 });
 
-router.get("/:id/actions");
+router.get("/:id/actions", validateProjectId, async (req, res, next) => {
+  try {
+    res.status(200).json(await Projects.getProjectActions(req.params.id));
+  } catch (err) {
+    next(err);
+  }
+});
 
 module.exports = router;

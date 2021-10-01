@@ -14,6 +14,20 @@ async function validateActionsId(req, res, next) {
   }
 }
 
+function validateActionsFields(req, res, next) {
+  const { description, notes, project_id } = req.body;
+  try {
+    if ((!description || !notes, !project_id)) {
+      next({ status: 400, message: "Required field missing" });
+    } else {
+      next();
+    }
+  } catch (err) {
+    next(err);
+  }
+}
+
 module.exports = {
   validateActionsId,
+  validateActionsFields,
 };
