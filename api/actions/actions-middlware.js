@@ -23,6 +23,7 @@ async function validateActionsFields(req, res, next) {
       !description ||
       typeof description !== "string" ||
       !description.trim() ||
+      description.length > 128 ||
       !notes ||
       typeof notes !== "string" ||
       !notes.trim() ||
