@@ -36,9 +36,13 @@ router.put(
   validateProjectBody,
   async (req, res, next) => {
     try {
-      const updatedProject = await Projects.update(req.params.id, req.body);
-      console.log(updatedProject);
-      res.status(200).json(updatedProject);
+        if (req.body.completed === undefined) {
+          next({ status: 400, message: "need completed field" });
+        } else {
+          const updatedProject = await Projects.update(req.params.id, req.body);
+          res.status(200).json(updatedProject);
+        }
+
     } catch (err) {
       next(err);
     }
