@@ -36,7 +36,9 @@ router.put(
   validateProjectBody,
   async (req, res, next) => {
     try {
-      res.status(200).json(await Projects.update(req.params.id, req.body));
+      const updatedProject = await Projects.update(req.params.id, req.body);
+      console.log(updatedProject);
+      res.status(200).json(updatedProject);
     } catch (err) {
       next(err);
     }
