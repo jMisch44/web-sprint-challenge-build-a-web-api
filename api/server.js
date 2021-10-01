@@ -10,5 +10,12 @@ server.use("/api/projects", projectsRouter);
 // Build your actions router in /api/actions/actions-router.js
 // Build your projects router in /api/projects/projects-router.js
 // Do NOT `server.listen()` inside this file!
+server.use(errorHandling);
 
 module.exports = server;
+
+function errorHandling(err, req, res, next) {
+  res.status(err.status || 500).json({
+    message: err.message,
+  });
+}
