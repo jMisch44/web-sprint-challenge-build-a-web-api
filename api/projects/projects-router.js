@@ -3,6 +3,7 @@ const Projects = require("./projects-model.js");
 const {
   validateProjectId,
   validateProjectBody,
+  validateCompletedField,
 } = require("./projects-middleware.js");
 const router = express.Router();
 
@@ -34,15 +35,11 @@ router.put(
   "/:id",
   validateProjectId,
   validateProjectBody,
+  validateCompletedField,
   async (req, res, next) => {
     try {
-        if (req.body.completed === undefined) {
-          next({ status: 400, message: "need completed field" });
-        } else {
-          const updatedProject = await Projects.update(req.params.id, req.body);
-          res.status(200).json(updatedProject);
-        }
-
+      const updatedProject = await Projects.update(req.params.id, req.body);
+      res.status(200).json(updatedProject);
     } catch (err) {
       next(err);
     }

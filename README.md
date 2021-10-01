@@ -147,7 +147,16 @@ We have provided test data for all the resources.
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics. You might prepare by writing down your own answers before hand.
 
 1. The core features of Node.js and Express and why they are useful.
+    Node allows a developer to use javaScript to write server code that communicates with the client using JSON formatting. Express is a Framework that sits on top of Node.js. It's main features are Middleware, Routing, Routers for apps and Convenience helpers that provide functionalities to simplify writing web apps or APIs.
+
 1. Understand and explain the use of Middleware.
+    Middleware is a software that enables communication and connectivity between applications, tools, or databases to provide a unified service to users. It can be used to change the what is passed through it, but it does not have to. 
+
 1. The basic principles of the REST architectural style.
+    The basic principles of the REST architectural style are that everything is a resource, that is accessible with a unique URI, and can have multiple representations. The communication must happen over a stateless protocol, with resource management occurring via HTTP methods.
+
 1. Understand and explain the use of Express Routers.
+    Express Router is a way to separate out endpoints from the main file. Each Route can have it's own routing and middleware that goes specifically with the endpoints. It is later composed together in to the server file. 
+
 1. Describe tooling used to manually test the correctness of an API.
+    Testing APIS requires a tool to manually test to ensure that POST, PUT, PATCH, and DELETE requests are being made correctly to the server. The tooling allows you to have control when making requests. You can choose the HTTP method, add JSON to the request body, examine the response, and more to ensure that your API is working as you would like it to.

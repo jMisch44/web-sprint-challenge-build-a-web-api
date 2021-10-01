@@ -30,7 +30,16 @@ function validateProjectBody(req, res, next) {
   }
 }
 
+function validateCompletedField(req, res, next) {
+  if (req.body.completed === undefined) {
+    next({ status: 400, message: "missing required field" });
+  } else {
+    next();
+  }
+}
+
 module.exports = {
   validateProjectId,
   validateProjectBody,
+  validateCompletedField,
 };

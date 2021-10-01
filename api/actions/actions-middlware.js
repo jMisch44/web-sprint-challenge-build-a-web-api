@@ -19,7 +19,15 @@ async function validateActionsFields(req, res, next) {
   const { description, notes, project_id } = req.body;
   try {
     const project = await Projects.get(project_id);
-    if (!description || !notes || !project) {
+    if (
+      !description ||
+      typeof description !== "string" ||
+      !description.trim() ||
+      !notes ||
+      typeof notes !== "string" ||
+      !notes.trim() ||
+      !project
+    ) {
       next({ status: 400, message: "Required field missing" });
     } else {
       next();
